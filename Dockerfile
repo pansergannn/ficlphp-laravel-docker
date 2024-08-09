@@ -4,6 +4,8 @@ FROM node:16.20.2-alpine as node
 WORKDIR /app
 COPY . .
 # Building assets
+RUN node -v
+RUN npm install popper.js --save
 RUN npm install && npm run dev
 
 # Build BE
