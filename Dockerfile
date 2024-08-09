@@ -1,4 +1,4 @@
-FROM node:15-alpine as node
+FROM node:16.20.2-alpine as node
 
 # Build FE first
 WORKDIR /app
@@ -7,7 +7,7 @@ COPY . .
 RUN npm install && npm run dev
 
 # Build BE
-FROM webdevops/php-nginx:8.2-alpine
+FROM webdevops/php-nginx:8.3.8-alpine
 
 # Install Laravel framework system requirements (https://laravel.com/docs/10.x/deployment)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
