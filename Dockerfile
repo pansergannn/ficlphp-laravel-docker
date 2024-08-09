@@ -6,6 +6,7 @@ COPY . .
 # Building assets
 RUN node -v
 RUN npm install axios
+RUN npm install vue
 RUN npm install bootstrap
 RUN npm install popper.js --save
 RUN npm install && npm run dev
