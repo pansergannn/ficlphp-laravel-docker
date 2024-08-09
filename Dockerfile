@@ -1,4 +1,4 @@
-FROM node:18-alpine as node
+FROM node:15-alpine as node
 
 # Build FE first
 WORKDIR /app
