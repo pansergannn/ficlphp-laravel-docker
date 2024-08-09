@@ -1,73 +1,60 @@
-@extends('layouts.app')
-
+@extends('layouts.auth')
+@section('title')
+    {{__('messages.login')}}
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <div class="d-flex flex-column flex-column-fluid align-items-center justify-content-center p-4">
+        <div class="col-12 text-center">
+            <a href="{{ route('medical') }}" class="image mb-7 mb-sm-10">
+                <img alt="Logo" src="{{ asset(getAppLogo()) }}" class="img-fluid" style="width:90px;" loading="lazy">
+            </a>
+        </div>
+        <div class="width-540">
+            @include('flash::message')
+            @include('layouts.errors')
+        </div>
+        <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
+            <h1 class="text-center mb-7">{{__('auth.sign_in')}}</h1>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="mb-sm-7 mb-4">
+                    <label for="email" class="form-label">
+                        {{ __('messages.patient.email').':' }}<span class="required"></span>
+                    </label>
+                    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" required placeholder="{{__('messages.patient.enter_email')}}">
                 </div>
-            </div>
+
+                <div class="mb-sm-7 mb-4 position-relative">
+                    <div class="d-flex justify-content-between">
+                        <label for="password" class="form-label">{{ __('messages.patient.password') .':' }}<span
+                                    class="required"></span></label>
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="link-info fs-6 text-decoration-none">
+                                {{ __('messages.common.forgot_your_password').'?' }}
+                            </a>
+                        @endif
+                    </div>
+                    <input name="password" type="password" class="form-control" id="password" required placeholder="{{__('messages.patient.enter_password')}}">
+                    <span class="position-absolute d-flex align-items-center top-0 bottom-0 end-0 mt-7 me-4 input-icon input-password-hide cursor-pointer text-gray-600 change-type">
+                        <i class="fas fa-eye-slash"></i>
+                    </span>
+                </div>
+
+                <div class="mb-sm-7 mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember_me">
+                    <label class="form-check-label" for="remember_me">{{ __('messages.common.remember_me') }}</label>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">{{ __('messages.login') }}</button>
+                </div>
+
+                <div class="d-flex align-items-center mb-10 mt-4">
+                    <span class="text-gray-700 me-2">{{__('messages.web.new_here').'?'}}</span>
+                    <a href="{{ route('register') }}" class="link-info fs-6 text-decoration-none">
+                        {{__('messages.web.create_an_account')}}
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
 @endsection
