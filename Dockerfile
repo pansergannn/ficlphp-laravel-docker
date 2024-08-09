@@ -4,7 +4,7 @@ FROM node:18-alpine as node
 WORKDIR /app
 COPY . .
 # Building assets
-RUN npm install && npm run build
+RUN npm install && npm run dev
 
 # Build BE
 FROM webdevops/php-nginx:8.2-alpine
