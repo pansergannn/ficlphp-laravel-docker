@@ -7,7 +7,7 @@ COPY . .
 RUN npm install && npm run dev
 
 # Build BE
-FROM webdevops/php-nginx:8.3.8-alpine
+FROM webdevops/php-nginx:8.3-alpine
 
 # Install Laravel framework system requirements (https://laravel.com/docs/10.x/deployment)
 RUN apk add oniguruma-dev postgresql-dev libxml2-dev
