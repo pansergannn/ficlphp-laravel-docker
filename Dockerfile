@@ -4,6 +4,8 @@ FROM node:16.20.2-alpine as node
 WORKDIR /app
 COPY . .
 # Building assets
+RUN mkdir -p /app/resources/assets/images
+COPY resources/assets/images /app/resources/assets/images
 RUN node -v
 RUN npm install axios
 RUN npm install vue
