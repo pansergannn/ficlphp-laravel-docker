@@ -7,14 +7,14 @@ COPY . .
 #RUN mkdir -p /app/resources/assets/images
 #COPY resources/assets/images /app/resources/assets/images
 RUN node -v
+RUN npm install
 RUN npm install bootstrap
 
 RUN npm install popper.js 
 RUN npm install axios
 RUN npm install vue
 RUN npm install vue-loader
-
-RUN npm install && npm run dev
+RUN npm run dev
 #RUN npm install axios vue vue-loader vue-template-compiler bootstrap popper.js && npm run dev
 # Build BE
 FROM webdevops/php-nginx:8.3-alpine
