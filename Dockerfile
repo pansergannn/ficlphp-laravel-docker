@@ -4,16 +4,16 @@ FROM node:16.20.2-alpine as node
 WORKDIR /app
 COPY . .
 # Building assets
-RUN mkdir -p /app/resources/assets/images
-COPY resources/assets/images /app/resources/assets/images
+#RUN mkdir -p /app/resources/assets/images
+#COPY resources/assets/images /app/resources/assets/images
 RUN node -v
-RUN npm install axios
-RUN npm install vue
-RUN npm install vue-loader vue-template-compiler --save-dev
-RUN npm install bootstrap
-RUN npm install popper.js --save
-RUN npm install && npm run dev
-
+#RUN npm install axios
+#RUN npm install vue
+#RUN npm install vue-loader vue-template-compiler --save-dev
+#RUN npm install bootstrap
+#RUN npm install popper.js --save
+#RUN npm install && npm run dev
+RUN npm install axios vue vue-loader vue-template-compiler bootstrap popper.js && npm run dev
 # Build BE
 FROM webdevops/php-nginx:8.3-alpine
 
