@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 //copy folder
-mix.copyDirectory('../resources/assets/images', 'public/assets/image');
+mix.copyDirectory('fuckypuresources/assets/images', 'public/assets/image');
 mix.copyDirectory('resources/assets/front/vendor/font-awesome/webfonts',
     'public/assets/webfonts');
 mix.copyDirectory('public/web/plugins/global/fonts', 'public/assets/css/fonts');
