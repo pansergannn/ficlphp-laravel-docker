@@ -8,9 +8,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
+    | as Stripe, Mailgun, SparkPost and others. This file provides a sane
+    | default location for this type of information, allowing packages
+    | to have a conventional place to find your various credentials.
     |
     */
 
@@ -18,7 +18,6 @@ return [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
-        'scheme' => 'https',
     ],
 
     'postmark' => [
@@ -31,19 +30,18 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'stripe' => [
-        'key' => env('STRIPE_KEY'),
-        'secret_key' => env('STRIPE_SECRET'),
-        'webhook_secret_key' => env('STRIPE_WEBHOOK_SECRET_KEY'),
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
     ],
 
-    'paytm-wallet' => [
-        'env' => env('PAYTM_ENVIRONMENT'),
-        'merchant_id' => env('PAYTM_MERCHANT_ID'),
-        'merchant_key' => env('PAYTM_MERCHANT_KEY'),
-        'merchant_website' => env('PAYTM_MERCHANT_WEBSITE'),
-        'channel' => env('PAYTM_CHANNEL'),
-        'industry_type' => env('PAYTM_INDUSTRY_TYPE'),
+    'stripe' => [
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+        'webhook' => [
+            'secret' => env('STRIPE_WEBHOOK_SECRET'),
+            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
+        ],
     ],
 
 ];
