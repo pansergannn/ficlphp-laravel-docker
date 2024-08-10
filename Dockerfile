@@ -59,15 +59,15 @@ RUN composer require inertiajs/inertia-laravel
 
 ENV DB_CONNECTION=mysql
 #ENV DB_HOST=dpg-cosk30821fec73chnkig-a
-ENV DB_HOST=dpg-cqoioqjv2p9s73aqpf90-a.oregon-postgres.render.com
-ENV DB_PORT=5432
+#ENV DB_HOST=dpg-cqoioqjv2p9s73aqpf90-a.oregon-postgres.render.com
+#ENV DB_PORT=5432
 #ENV DB_DATABASE=flutter_map
 #ENV DB_USERNAME=flutter_map_user
 #ENV DB_PASSWORD=PKWdnBfR2vtwNs0hOw537PpzEYBCeTXL
 
-ENV DB_DATABASE=fc_1xnc
-ENV DB_USERNAME=fc_1xnc_user
-ENV DB_PASSWORD=niwPOemyQ4OnoaOWYAhsORFNWzJqAgTV
+#ENV DB_DATABASE=fc_1xnc
+#ENV DB_USERNAME=fc_1xnc_user
+#ENV DB_PASSWORD=niwPOemyQ4OnoaOWYAhsORFNWzJqAgTV
 RUN php artisan config:clear
 RUN php artisan cache:clear
 #RUN php artisan key:generate 
