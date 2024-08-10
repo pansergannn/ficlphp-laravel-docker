@@ -70,7 +70,7 @@ ENV DB_USERNAME=fc_1xnc_user
 ENV DB_PASSWORD=niwPOemyQ4OnoaOWYAhsORFNWzJqAgTV
 RUN php artisan config:clear
 RUN php artisan cache:clear
-RUN php artisan install:api
+#RUN php artisan install:api
 
 #RUN composer require moonshine/moonshine
 #RUN php artisan moonshine:install
