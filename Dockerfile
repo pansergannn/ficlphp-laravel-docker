@@ -70,7 +70,7 @@ ENV DB_CONNECTION=mysql
 #ENV DB_PASSWORD=niwPOemyQ4OnoaOWYAhsORFNWzJqAgTV
 RUN php artisan config:clear
 RUN php artisan cache:clear
-RUN php artisan route:clear
+RUN php artisan route:cache
 #RUN php artisan key:generate 
 #RUN php artisan install:api
 
