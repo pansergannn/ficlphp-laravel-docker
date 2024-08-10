@@ -57,7 +57,7 @@ RUN composer self-update
 # RUN composer require laravel/breeze --dev
 RUN composer require inertiajs/inertia-laravel
 
-ENV DB_CONNECTION=pgsql
+ENV DB_CONNECTION=mysql
 #ENV DB_HOST=dpg-cosk30821fec73chnkig-a
 ENV DB_HOST=dpg-cqoioqjv2p9s73aqpf90-a.oregon-postgres.render.com
 ENV DB_PORT=5432
