@@ -2,6 +2,8 @@
 <html dir="ltr" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="{{ getAppName() }}" />
     <link rel="icon" href="{{ asset(getAppFavicon()) }}" type="image/png">
