@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
+use App\Events\CreateGoogleAppointment;
+use App\Events\DeleteAppointmentFromGoogleCalendar;
+use App\Listeners\HandleCreatedGoogleAppointment;
+use App\Listeners\HandleDeletedAppointmentFromGoogleCalendar;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,17 +21,27 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        DeleteAppointmentFromGoogleCalendar::class => [
+            HandleDeletedAppointmentFromGoogleCalendar::class,
+        ],
+        CreateGoogleAppointment::class => [
+            HandleCreatedGoogleAppointment::class,
+        ],
     ];
 
     /**
      * Register any events for your application.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        parent::boot();
-
         //
+    }
+
+    /**
+     * Determine if events and listeners should be automatically discovered.
+     */
+    public function shouldDiscoverEvents(): bool
+    {
+        return false;
     }
 }
